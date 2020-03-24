@@ -1,0 +1,5 @@
+#Rename this file as terraform.tfvars and update the below values
+
+location = <preferred_location>
+prefix = <Resoruce_Group_Name>
+vnet_cidr = <CIDR_block_for_VNET>
