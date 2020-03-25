@@ -13,3 +13,7 @@ variable "vnet_cidr" {
     description = "CIDR block for your VNET ex: ['10.0.0.0/16'] "
 
 }
+
+variable "password" {
+    description = "password for admin user"
+}

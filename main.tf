@@ -6,7 +6,7 @@ provider "azurerm" {
 
 resource "azurerm_resource_group" "main" {
     name = "${var.prefix}-ResourceGroup"
-    location = "${var.location}"
+    location = var.location
 
 }
 
@@ -15,7 +15,7 @@ resource "azurerm_virtual_network" "main" {
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
   address_space       = var.vnet_cidr
-  dns_servers         = ["10.0.0.4", "10.0.0.5"]
+
 
   subnet {
     name           = "public"
@@ -27,4 +27,13 @@ resource "azurerm_virtual_network" "main" {
     Name = "abc"
     environment = "development"
   }
+}
+
+resource "azurerm_subnet" "public" {
+
+  name                 = "default"
+  resource_group_name  = azurerm_resource_group.main.name
+  virtual_network_name = azurerm_virtual_network.main.name
+  address_prefix       = "10.0.2.0/24"
+
 }
